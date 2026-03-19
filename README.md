@@ -97,6 +97,27 @@ Si tambien queres abrir la web principal:
 powershell -ExecutionPolicy Bypass -File .\scripts\start-microservices.ps1 -WithWeb
 ```
 
+En Raspberry Pi 4 o Linux ARM tambien podes usar:
+
+```bash
+chmod +x scripts/start-microservices-rpi.sh
+./scripts/start-microservices-rpi.sh
+```
+
+Y si queres levantar tambien la web:
+
+```bash
+./scripts/start-microservices-rpi.sh --with-web
+```
+
+El script:
+
+- descubre microservicios dentro de `services/`
+- usa puertos fijos conocidos (`8010`, `8020`, `8030`, `8040`, `8050`)
+- guarda logs en `.runtime/logs/`
+- guarda PIDs en `.runtime/pids/`
+- evita relanzar un servicio si ya esta corriendo
+
 La web principal puede usar el microservicio de ejecucion si agregas en `.env`:
 
 ```env
@@ -183,6 +204,41 @@ Instalar dependencias:
 
 ```bash
 pip install -r requirements.txt
+```
+
+## Raspberry Pi 4
+
+Para preparar una Raspberry Pi 4 con Raspberry Pi OS o Debian:
+
+```bash
+chmod +x scripts/install-rpi-deps.sh
+./scripts/install-rpi-deps.sh
+```
+
+Esto instala:
+
+- `python3`
+- `python3-venv`
+- `python3-pip`
+- `git`
+- `build-essential`
+- `libffi-dev`
+- `libssl-dev`
+- y despues crea un `venv` e instala `requirements.txt`
+
+Opciones utiles:
+
+```bash
+./scripts/install-rpi-deps.sh --system-only
+./scripts/install-rpi-deps.sh --skip-apt
+./scripts/install-rpi-deps.sh --venv-dir .venv-rpi
+```
+
+Despues de instalar:
+
+```bash
+source .venv/bin/activate
+./scripts/start-microservices-rpi.sh --with-web
 ```
 
 Correr con noticias de ejemplo:
