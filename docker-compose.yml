@@ -1,0 +1,157 @@
+services:
+  news-service:
+    build: .
+    container_name: bot-news-service
+    command: python -m uvicorn services.news_service.app:app --host 0.0.0.0 --port 8050
+    env_file:
+      - .env
+    environment:
+      ACTIVITY_DB_PATH: /app/data/bot_activity.db
+      ACTIVITY_JSON_PATH: /app/data/bot_activity.json
+    ports:
+      - "8050:8050"
+    volumes:
+      - bot_data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8050/health', timeout=3)"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  ai-filter-service:
+    build: .
+    container_name: bot-ai-filter-service
+    command: python -m uvicorn services.ai_filter_service.app:app --host 0.0.0.0 --port 8030
+    env_file:
+      - .env
+    environment:
+      ACTIVITY_DB_PATH: /app/data/bot_activity.db
+      ACTIVITY_JSON_PATH: /app/data/bot_activity.json
+    ports:
+      - "8030:8030"
+    volumes:
+      - bot_data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8030/health', timeout=3)"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  market-data-service:
+    build: .
+    container_name: bot-market-data-service
+    command: python -m uvicorn services.market_data_service.app:app --host 0.0.0.0 --port 8020
+    env_file:
+      - .env
+    environment:
+      ACTIVITY_DB_PATH: /app/data/bot_activity.db
+      ACTIVITY_JSON_PATH: /app/data/bot_activity.json
+    ports:
+      - "8020:8020"
+    volumes:
+      - bot_data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8020/health', timeout=3)"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  signal-engine:
+    build: .
+    container_name: bot-signal-engine
+    command: python -m uvicorn services.signal_engine.app:app --host 0.0.0.0 --port 8040
+    env_file:
+      - .env
+    environment:
+      ACTIVITY_DB_PATH: /app/data/bot_activity.db
+      ACTIVITY_JSON_PATH: /app/data/bot_activity.json
+    ports:
+      - "8040:8040"
+    volumes:
+      - bot_data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8040/health', timeout=3)"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  execution-service:
+    build: .
+    container_name: bot-execution-service
+    command: python -m uvicorn services.execution_service.app:app --host 0.0.0.0 --port 8010
+    env_file:
+      - .env
+    environment:
+      ACTIVITY_DB_PATH: /app/data/bot_activity.db
+      ACTIVITY_JSON_PATH: /app/data/bot_activity.json
+    ports:
+      - "8010:8010"
+    volumes:
+      - bot_data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8010/health', timeout=3)"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  web:
+    build: .
+    container_name: bot-web
+    command: python -m uvicorn bot_trading_news.service:app --host 0.0.0.0 --port 8000
+    env_file:
+      - .env
+    environment:
+      NEWS_SERVICE_URL: http://news-service:8050
+      AI_FILTER_SERVICE_URL: http://ai-filter-service:8030
+      MARKET_DATA_SERVICE_URL: http://market-data-service:8020
+      SIGNAL_ENGINE_URL: http://signal-engine:8040
+      EXECUTION_SERVICE_URL: http://execution-service:8010
+      ACTIVITY_DB_PATH: /app/data/bot_activity.db
+      ACTIVITY_JSON_PATH: /app/data/bot_activity.json
+    ports:
+      - "8000:8000"
+    volumes:
+      - bot_data:/app/data
+    depends_on:
+      news-service:
+        condition: service_healthy
+      ai-filter-service:
+        condition: service_healthy
+      market-data-service:
+        condition: service_healthy
+      signal-engine:
+        condition: service_healthy
+      execution-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  bot_data:

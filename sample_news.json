@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Nvidia surges after strong profit guidance and major AI partnership",
+    "description": "Analysts turn bullish as revenue growth beats expectations.",
+    "source": {
+      "name": "Market Wire"
+    },
+    "publishedAt": "2026-03-18T11:00:00Z",
+    "url": "https://example.com/nvda"
+  },
+  {
+    "title": "Tesla faces lawsuit after delay in key product launch",
+    "description": "The stock falls as investors price in execution risk.",
+    "source": {
+      "name": "Finance Daily"
+    },
+    "publishedAt": "2026-03-18T12:00:00Z",
+    "url": "https://example.com/tsla"
+  },
+  {
+    "title": "Bitcoin rally continues as ETF demand remains strong",
+    "description": "Crypto traders stay bullish after another record session.",
+    "source": {
+      "name": "Crypto Desk"
+    },
+    "publishedAt": "2026-03-18T13:00:00Z",
+    "url": "https://example.com/btc"
+  },
+  {
+    "title": "Oil jumps as Middle East tensions rise after new missile attack",
+    "description": "Global markets assess geopolitical risk while investors watch inflation and central bank reaction.",
+    "source": {
+      "name": "Reuters"
+    },
+    "publishedAt": "2026-03-18T14:00:00Z",
+    "url": "https://example.com/geopolitics"
+  }
+]

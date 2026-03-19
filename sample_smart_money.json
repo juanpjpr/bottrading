@@ -1,0 +1,98 @@
+[
+  {
+    "symbol": "AAPL",
+    "conviction_score": 1.8,
+    "manager_count": 3,
+    "crowding_risk": 0.6,
+    "top_managers": ["Berkshire Hathaway", "Pershing Square", "Coatue"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "AMZN",
+    "conviction_score": 1.2,
+    "manager_count": 2,
+    "crowding_risk": 0.4,
+    "top_managers": ["T. Rowe Price", "Fidelity"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "GOOGL",
+    "conviction_score": 1.1,
+    "manager_count": 2,
+    "crowding_risk": 0.3,
+    "top_managers": ["Vanguard", "BlackRock"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "META",
+    "conviction_score": 1.4,
+    "manager_count": 3,
+    "crowding_risk": 0.7,
+    "top_managers": ["Tiger Global", "Viking Global", "Lone Pine"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "NVDA",
+    "conviction_score": 2.1,
+    "manager_count": 4,
+    "crowding_risk": 1.0,
+    "top_managers": ["Coatue", "Tiger Global", "Vanguard", "BlackRock"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "MSFT",
+    "conviction_score": 1.5,
+    "manager_count": 3,
+    "crowding_risk": 0.5,
+    "top_managers": ["Vanguard", "BlackRock", "Fidelity"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "TSLA",
+    "conviction_score": -0.7,
+    "manager_count": 2,
+    "crowding_risk": 1.2,
+    "top_managers": ["ARK Invest", "Capital Group"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "SPY",
+    "conviction_score": 0.8,
+    "manager_count": 5,
+    "crowding_risk": 1.1,
+    "top_managers": ["Vanguard", "BlackRock", "State Street"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "BTC",
+    "conviction_score": 1.7,
+    "manager_count": 3,
+    "crowding_risk": 0.9,
+    "top_managers": ["MicroStrategy", "ARK Invest", "BlackRock ETF flows"],
+    "source": "sample_etf"
+  },
+  {
+    "symbol": "COIN",
+    "conviction_score": 1.0,
+    "manager_count": 2,
+    "crowding_risk": 0.6,
+    "top_managers": ["ARK Invest", "Cathie Wood Funds"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "XOM",
+    "conviction_score": 0.9,
+    "manager_count": 2,
+    "crowding_risk": 0.2,
+    "top_managers": ["Berkshire Hathaway", "Vanguard"],
+    "source": "sample_13f"
+  },
+  {
+    "symbol": "JPM",
+    "conviction_score": 1.0,
+    "manager_count": 2,
+    "crowding_risk": 0.3,
+    "top_managers": ["Berkshire Hathaway", "Dodge & Cox"],
+    "source": "sample_13f"
+  }
+]

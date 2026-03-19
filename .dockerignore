@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.venv/
+venv/
+dashboard.html
+research_report.json
+paper_orders.json
+bot_activity.db-shm
+bot_activity.db-wal

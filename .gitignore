@@ -1,0 +1,7 @@
+.env
+bot_activity.db
+bot_activity.json
+__pycache__/
+*.pyc
+dashboard.html
+research_report.json
